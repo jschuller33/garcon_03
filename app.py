@@ -47,6 +47,8 @@ def webhook():
                         send_message(sender_id, "I can't do that quite yet")
                         pass
 
+                    send_message(sender_id, "this is the message to be sent back")
+
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
