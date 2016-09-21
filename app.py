@@ -33,13 +33,13 @@ def webhook():
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
 
-                if messaging_event.get("message"):  # someone sent us a message
+                if messaging_event.get("message") = "hello" :  # someone sent us a message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    send_message(sender_id, "test")
+                    send_message(sender_id, "this is the message to be sent back")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -51,17 +51,6 @@ def webhook():
                     pass
 
     return "ok", 200
-
-# Sentences we'll respond with if the user greeted us
-GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up",)
-
-GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
-
-def check_for_greeting(sentence):
-    """If any of the words in the user's input was a greeting, return a greeting response"""
-    for word in sentence.words:
-        if word.lower() in GREETING_KEYWORDS:
-            return random.choice(GREETING_RESPONSES)
 
 
 def send_message(recipient_id, message_text):
